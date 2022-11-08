@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body th:style="'background: url(src/Background.jpg) no-repeat center center fixed;'">
+
+
+<form action="#" th:action="@{/register}" method="post" th:object="${User}">
+    <h2>New on PokéMatch?</h2>
+    <div><label for="h">Firstname :</label>
+        <input id="h" type="text" th:field="*{firstname}">
+        <span  th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Invalid firstname</span></div>
+
+    <div><label for="w">Lastname :</label>
+        <input type="text" id="w" th:field="*{lastname}">
+        <span  th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Invalid lastname</span></div>
+
+    <div><button type="submit">register</button></div>
+</form>
+
+<div>
+    <tr>The fetish pokemon for this user is : </tr>
+    <tr th:text="${pokemon}"></tr>
+
+</div>
+
+<div>
+    <img th:if="${pokemon != null}" th:src="@{/images/{name}(name=${pokemon})}" width="200" height="200">
+
+    <!--img th:if="${pokemonImg != null}" th:src="${'data:image/png;charset=utf-8;base64,' + pokemonImg}" width="200" height="200"/-->
+    </div>
+
+
+
+<div th:if='${pokemonlist}'>
+    <H2>list of fetish pokemones</H2>
+    <tr th:each="pok: ${pokemonlist}">
+        <td th:text="${pok.getName()}"/>
+        </br>
+    </tr>
+</div>
+
+</body>
+</html>
