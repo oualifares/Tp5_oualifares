@@ -17,13 +17,24 @@ public class ImageService {
     private final HashMap<String,BufferedImage> pokemonsImg= new HashMap<String, BufferedImage>();
     private final PokemonList pokList ;
 
+
+
     public ImageService(PokemonList pokemonList){
         this.pokList = pokemonList;
+
 
         for (var pok : this.pokList.Getpokemonlist()) {
             pokemonsImg.put(pok.getName(), null);
         }
+    }
 
+    private Pokemon mappingImgUrl(String url ,WebClient webClient){
+        var pokemon =  webClient.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(Pokemon.class)
+                .block();
+        return pokemon ;
     }
 
 
@@ -32,7 +43,7 @@ public class ImageService {
             return pokemonsImg.get(pokemon);
        }else{
            var urlPokemon = pokList.getPokemon(pokemon).getUrl();
-           var url = PokemonStorage.mappingImgUrl(urlPokemon,webClient).GetImg() ;
+           var url = mappingImgUrl(urlPokemon,webClient).getImg() ;
            File imgPath = new File(url);
            BufferedImage bufferedImage = ImageIO.read(new URL(url));
            pokemonsImg.put(pokemon,bufferedImage);

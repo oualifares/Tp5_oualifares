@@ -18,17 +18,6 @@ public class PokemonStorage {
         return pokemonsList;
     }
 
-    public static Pokemon mappingImgUrl(String url ,WebClient webClient){
-       var pokemon =  webClient.get()
-               .uri(url)
-               .retrieve()
-               .bodyToMono(Pokemon.class)
-               .block();
-       return pokemon ;
-    }
-
-
-
 
 
 }

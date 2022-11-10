@@ -13,19 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+/*@RestController
 public class RestPokemonController {
 
-   /*private final PokemonList listPokemon =  PokemonStorage.CreateListPokemons();
+   private final PokemonList listPokemon ;
+   public RestPokemonController(PokemonList listPokemon){
+       this.listPokemon = listPokemon;
+   }
 
     @GetMapping ("/pokemons")
     public List<Pokemon> PostPokemon(){
-
-        //var getallpokemons = PokemonStorage.CreateListPokemons();
-
-        //return  user.PokemonFetiche(listPokemon.Getpokemonlist()) ;
         return listPokemon.Getpokemonlist() ;
-    }*/
+    }
 
 
-}
+}*/

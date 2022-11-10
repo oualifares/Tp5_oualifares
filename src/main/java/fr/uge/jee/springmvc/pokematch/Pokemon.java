@@ -8,10 +8,10 @@ public class Pokemon {
 
     private String url ;
 
-    private byte[] image ;
+
     private Sprites sprites ;
 
-    public String GetImg(){
+    public String getImg(){
         return sprites.getFront_default();
     }
 
@@ -40,12 +40,11 @@ public class Pokemon {
         return Math.abs(name.hashCode());
     }
 
+    public Pokemon(){
 
-    public byte[] getImage() {
-        return image;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
+
+
+
 }
